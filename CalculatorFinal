@@ -1,0 +1,110 @@
+package Calculator;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class CalculatorFinal {
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        String[] roman = {"O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
+                "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL",
+                "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX",
+                "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX",
+                "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX",
+                "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC",
+                "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C",
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
+        };
+        System.out.println("1) Калькулятор умеет выполнять операции сложения, вычитания, умножения и деления с двумя числами: a + b, a - b, a * b, a / b.");
+        System.out.println("2) Калькулятор умеет работать как с арабскими (1,2,3,4,5…), так и с римскими (I,II,III,IV,V…) числами.");
+        System.out.println("3) Калькулятор принимает на вход числа от 1 до 10 включительно, не более");
+        System.out.println("4) Калькулятор умеет работать только с целыми числами.");
+        System.out.println("5) Калькулятор умеет работать только с арабскими или римскими цифрами одновременно.");
+        System.out.println("Введите выражение:");
+
+        String expression = scanner.nextLine();
+
+
+        int chek = expression.length();
+       if (chek < 4) {
+            throw new Exception("строка не является математической операцией");
+        }
+
+
+        String[] ar = expression.split(" ");
+
+        int i = ar.length;
+        if (i<1){throw new Exception("строка не является математической операцией");}
+        if (i > 3) {
+            throw new Exception("формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+        }
+
+        int a = Arrays.asList(roman).indexOf(ar[0]);
+        int b = Arrays.asList(roman).indexOf(ar[2]);
+
+
+        if (a < 0) throw new Exception("Введено неподходящее число");
+        if (b < 0) throw new Exception("Введено неподходящее число");
+
+        if (a <= 11) {
+            if (b <= 11) {
+                if (a > 0) {
+                    if (b > 0) {
+                        if (ar[1].equals("+")) System.out.println(roman[a + b]);
+                        if (ar[1].equals("-")) {
+                            int c = a - b;
+                            if (c > 0) {
+                                System.out.println(roman[c]);
+                            }
+                            if (c < 1) {
+                                System.out.println("В римской системе исчесления нет отрицательных чисел и нуля");
+                            }
+                        }
+                        if (ar[1].equals("/")) {
+                            int d = a / b;
+                            System.out.println(roman[d]);
+                        }
+                        if (ar[1].equals("*")) {
+                            System.out.println(roman[a * b]);
+                        }
+                    }
+                }
+            } }
+            if (a>100) {
+            if (b > 100) {
+                if (a < 111) {
+                    if (b < 111) {
+                        int a1 = a - 100;
+                        int b1 = b - 100;
+                        if (a1 <= 10) {
+                            if (b1 <= 10) {
+                                if (a1 > 0) {
+                                    if (b1 > 0) {
+                                        if (ar[1].equals("+")) {
+                                            System.out.println(a1 + b1);
+                                        }
+                                        if (ar[1].equals("-")) {
+                                            System.out.println(a1 - b1);
+                                        }
+                                        if (ar[1].equals("/")) {
+                                            System.out.println(a1 / b1);
+                                        }
+                                        if (ar[1].equals("*")) {
+                                            System.out.println(a1 * b1);
+                                        }
+                                    }
+                                }
+                            }
+                        }}}}}
+
+                if (a < 12) {
+                    if (a > 0) {
+                        if (b > 100){ if(b<110) throw new Exception("используются одновременно разные системы счисления");
+                    }}}
+                 if (b < 12) {
+                    if (b > 0) {
+                        if (a > 100){if(a<110) throw new Exception("используются одновременно разные системы счисления");
+                    }
+        }}
+    }
+}
